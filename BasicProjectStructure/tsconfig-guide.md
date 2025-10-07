@@ -1,6 +1,4 @@
 #  TypeScript `tsconfig.json` --- Basic to Advanced Explanation (with Bangla Example)
-## code 
-------------------------------------------------------------------------
 {
   "compilerOptions": {
     /* 🌐 Basic environment setup */
@@ -43,8 +41,6 @@
   "exclude": ["node_modules"]
 }
 
-
------------------------------------------------------------------------
 
 
 ## 🧩 **Basic Options (মূল সেটিংস)**
