@@ -317,3 +317,4 @@ import Button from "@/components/Button"; //  অনেক ছোট ও পর�
  **Tip:**\
 এই কনফিগারেশনটি বিশেষভাবে **Next.js + TypeScript + Tailwind CSS**
 প্রোজেক্টের জন্য খুবই উপযোগী।
+https://medium.com/@kithma/beginners-guide-to-tsconfig-json-462489891663
