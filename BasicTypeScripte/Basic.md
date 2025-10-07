@@ -70,4 +70,111 @@ ts
 let data: number;
 data = 10;     //  valid
 // data = "Hi"; //  Error
-----------------
+```
+
+## Explicit Type and Union  w
+``
+let id: string | number;
+id = 101;       // allowed (number)
+id = "E101";    // allowed (string)
+id = true;      // not allowed (boolean not included)
+ব্যাখ্যা:
+এখানে id হয় string বা number হতে পারে, কিন্তু অন্য কিছু নয়।
+``
+## Function Example with Union Type
+``
+function printId(id: string | number) {
+  console.log(`Your ID is: ${id}`);
+}
+
+printId(123);       // number
+printId("abc123");  // string
+// printId(true);   // error
+``
+## Union Type + Type Narrowing Example
+``
+TypeScript বুঝতে পারে কোন টাইপ বর্তমানে ব্যবহৃত হচ্ছে।
+
+function getLength(value: string | number): number {
+  if (typeof value === "string") {
+    return value.length; // string হলে length পাওয়া যাবে
+  } else {
+    return value; // number হলে সরাসরি মান return
+  }
+}
+
+console.log(getLength("Hello")); // Output: 5
+console.log(getLength(10));      // O
+
+যখন আমরা স্পষ্টভাবে বলে দেই একটি array-এর ভিতরে কোন টাইপের মান থাকবে।
+``
+// Only numbers allowed
+let scores: number[] = [90, 85, 88];
+scores.push(95);     // valid
+// scores.push("99"); //  Error: string not allowed
+
+// Only strings allowed
+let names: string[] = ["Abdullah", "Mamun"];
+names.push("Hasan");  //  valid
+// names.push(25);     //  Error
+
+
+এখানে TypeScript জানে scores শুধু number[] আর names শুধু string[]।
+
+## Union Type with Array
+``
+একটি array-এর মধ্যে একাধিক টাইপের মান রাখতে চাইলে Union Type ব্যবহার করা হয়।
+
+// Can hold both numbers and strings
+let mixedArray: (string | number)[] = ["Abdullah", 25, "Mamun", 100];
+
+mixedArray.push("Hello");  // valid
+mixedArray.push(50);       // valid
+// mixedArray.push(true);   // Error: boolean not allowed
+
+
+এখানে mixedArray-এর প্রতিটি আইটেম string অথবা number হতে পারে।
+``
+## Explicit Type with Object
+``
+let user: {
+  name: string;
+  age: number;
+  isVerified: boolean;
+} = {
+  name: "Abdullah",
+  age: 25,
+  isVerified: true,
+};
+
+// user.age = "twenty"; // Error: string not allowed
+
+
+ এখানে user অবজেক্টের প্রতিটি প্রপার্টির টাইপ স্পষ্টভাবে ঘোষণা করা হয়েছে।
+``
+## Union Type with Object
+``
+যখন কোনো প্রপার্টি একাধিক টাইপ নিতে পারে:
+
+let employee: {
+  id: string | number;
+  name: string;
+  salary?: number; // optional
+} = {
+  id: "E101",
+  name: "Mamun",
+};
+
+employee.id = 102;  //  valid
+employee.id = "E102"; // valid
+// employee.id = true; //  Error
+let employee2: Object;
+
+employee2 = {
+  id: "E101",
+  name: "Mamun",
+};
+
+ এখানে id প্রপার্টি হয় string বা number হতে পারে।
+salary প্রপার্টি optional, তাই দেওয়া বা না দেওয়া — দুইটাই ঠিক আছে।
+``
