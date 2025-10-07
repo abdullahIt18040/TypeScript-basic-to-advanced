@@ -6,7 +6,7 @@
   
    
 
-    /* ⚙️ Core settings */
+    /*  Core settings */
     
      "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,33 +15,33 @@
     "noEmit": true,
     "esModuleInterop": true,
 
-    /* 📦 Module system */
+    /*  Module system */
     "module": "esnext",
     "moduleResolution": "bundler",
 
-    /* 🧩 Extra features */
+    /*  Extra features */
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
 
-    /* 🧠 Plugin for Next.js */
+    /*  Plugin for Next.js */
     "plugins": [
       {
         "name": "next"
       }
     ],
 
-    /* 🛣️ Path aliases (optional but handy) */
+    /* Path aliases (optional but handy) */
     "paths": {
       "@/*": ["./src/*"]
     }
   },
 
-  /* 📁 Included files */
+  /* Included files */
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
 
-  /* 🚫 Excluded folders */
+  /*  Excluded folders */
   "exclude": ["node_modules"]
 
   
@@ -49,7 +49,7 @@
 
 
 
-## 🧩 **Basic Options (মূল সেটিংস)**
+## **Basic Options (মূল সেটিংস)**
 
 ### 1. `"lib": ["dom", "dom.iterable", "esnext"]`
 
@@ -109,8 +109,8 @@ import { greet } from "./helper"; // helper.js থেকেও import করা 
 
 ``` ts
 let name: string;
-name = "Mamun"; // ✅ ঠিক আছে
-name = null; // ❌ Error, কারণ strictNullChecks চালু আছে
+name = "Mamun"; //  ঠিক আছে
+name = null; //  Error, কারণ strictNullChecks চালু আছে
 ```
 
 ------------------------------------------------------------------------
@@ -127,12 +127,10 @@ tsc
 # কোনো .js ফাইল তৈরি হবে না, শুধু এরর চেক করবে
 ```
 
-➡️ Next.js বা Vite-এর মতো প্রোজেক্টে এটি সাধারণত ব্যবহৃত হয় কারণ তারা
+ Next.js বা Vite-এর মতো প্রোজেক্টে এটি সাধারণত ব্যবহৃত হয় কারণ তারা
 নিজেরা বিল্ড করে।
 
 ------------------------------------------------------------------------
-
-## ⚙️ **Intermediate Options (মাঝারি স্তর)**
 
 ### 6. `"esModuleInterop": true`
 
@@ -212,10 +210,10 @@ console.log(data.name); // "Mamun"
 **উদাহরণ:**
 
 ``` ts
-// ❌ Error যদি কোনো ফাইল মডিউল না হয়
+//  Error যদি কোনো ফাইল মডিউল না হয়
 let x = 10;
 
-// ✅ ঠিক করতে হবে
+// ঠিক করতে হবে
 export {};
 ```
 
@@ -223,7 +221,7 @@ export {};
 
 ###  11. `"jsx": "preserve"`
 
-👉 JSX কোড TypeScript ট্রান্সফর্ম না করে রাখে (Next.js নিজেই JSX
+JSX কোড TypeScript ট্রান্সফর্ম না করে রাখে (Next.js নিজেই JSX
 হ্যান্ডেল করে)।
 
 **উদাহরণ:**
