@@ -73,16 +73,16 @@ data = 10;     //  valid
 ```
 
 ## Explicit Type and Union 
-``
+
 let id: string | number;
 id = 101;       // allowed (number)
 id = "E101";    // allowed (string)
 id = true;      // not allowed (boolean not included)
 ব্যাখ্যা:
 এখানে id হয় string বা number হতে পারে, কিন্তু অন্য কিছু নয়।
-`
+
 ## Function Example with Union Type
-`
+
 function printId(id: string | number) {
   console.log(`Your ID is: ${id}`);
 }
@@ -90,9 +90,9 @@ function printId(id: string | number) {
 printId(123);       // number
 printId("abc123");  // string
 // printId(true);   // error
-`
+
 ## Union Type + Type Narrowing Example
-``
+
 TypeScript বুঝতে পারে কোন টাইপ বর্তমানে ব্যবহৃত হচ্ছে।
 
 function getLength(value: string | number): number {
@@ -107,7 +107,7 @@ console.log(getLength("Hello")); // Output: 5
 console.log(getLength(10));      // O
 
 যখন আমরা স্পষ্টভাবে বলে দেই একটি array-এর ভিতরে কোন টাইপের মান থাকবে।
-``
+
 // Only numbers allowed
 let scores: number[] = [90, 85, 88];
 scores.push(95);     // valid
@@ -122,7 +122,7 @@ names.push("Hasan");  //  valid
 এখানে TypeScript জানে scores শুধু number[] আর names শুধু string[]।
 
 ## Union Type with Array
-``
+
 একটি array-এর মধ্যে একাধিক টাইপের মান রাখতে চাইলে Union Type ব্যবহার করা হয়।
 
 // Can hold both numbers and strings
@@ -134,9 +134,9 @@ mixedArray.push(50);       // valid
 
 
 এখানে mixedArray-এর প্রতিটি আইটেম string অথবা number হতে পারে।
-``
+
 ## Explicit Type with Object
-``
+
 let user: {
   name: string;
   age: number;
@@ -151,9 +151,9 @@ let user: {
 
 
  এখানে user অবজেক্টের প্রতিটি প্রপার্টির টাইপ স্পষ্টভাবে ঘোষণা করা হয়েছে।
-``
+
 ## Union Type with Object
-``
+`
 যখন কোনো প্রপার্টি একাধিক টাইপ নিতে পারে:
 
 let employee: {
@@ -177,4 +177,3 @@ employee2 = {
 
  এখানে id প্রপার্টি হয় string বা number হতে পারে।
 salary প্রপার্টি optional, তাই দেওয়া বা না দেওয়া — দুইটাই ঠিক আছে।
-``
