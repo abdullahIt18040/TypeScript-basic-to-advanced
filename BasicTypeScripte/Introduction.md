@@ -1,5 +1,5 @@
 ## Why We Use TypeScript Over JavaScript
-Superset of JavaScript
+## Superset of JavaScript
 
 TypeScript হলো JavaScript-এর একটি superset, অর্থাৎ JavaScript-এর সব features TypeScript-এ আছে, সাথে আরও নতুন ক্ষমতাও যোগ করা হয়েছে।
  Every JavaScript code is valid TypeScript code.
@@ -7,7 +7,7 @@ TypeScript হলো JavaScript-এর একটি superset, অর্থাৎ
 // Valid in both JavaScript & TypeScript
 console.log("Hello World!");
 
-Allow Static & Strict Typing
+## Allow Static & Strict Typing
 
 TypeScript কোড লেখার সময় variable-এর টাইপ ঠিক করে দেয়,
 ফলে ভুল ধরতে পারি compile-time এ (runtime এ নয়)।
@@ -15,7 +15,7 @@ TypeScript কোড লেখার সময় variable-এর টাইপ ঠ�
 let name: string = "Abdullah";
 name = 123; //  Error: number is not assignable to string
 
- Support Extra Features Like enum, interface, generic, and tuple
+## Support Extra Features Like enum, interface, generic, and tuple
 
 এগুলো JavaScript-এ নেই, কিন্তু TypeScript-এ পাওয়া যায় —
 এতে কোড structured, readable এবং reusable হয়।
