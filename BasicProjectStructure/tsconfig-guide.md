@@ -1,46 +1,4 @@
 #  TypeScript `tsconfig.json` --- Basic to Advanced Explanation (with Bangla Example)
-{
-  "compilerOptions": {
-    /* 🌐 Basic environment setup */
-    "lib": ["dom", "dom.iterable", "esnext"],
-
-    /* ⚙️ Core settings */
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-
-    /* 📦 Module system */
-    "module": "esnext",
-    "moduleResolution": "bundler",
-
-    /* 🧩 Extra features */
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-
-    /* 🧠 Plugin for Next.js */
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-
-    /* 🛣️ Path aliases (optional but handy) */
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-
-  /* 📁 Included files */
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-
-  /* 🚫 Excluded folders */
-  "exclude": ["node_modules"]
-}
-
 
 
 ## 🧩 **Basic Options (মূল সেটিংস)**
