@@ -72,7 +72,7 @@ data = 10;     //  valid
 // data = "Hi"; //  Error
 ```
 
-## Explicit Type and Union  w
+## Explicit Type and Union 
 ``
 let id: string | number;
 id = 101;       // allowed (number)
@@ -80,9 +80,9 @@ id = "E101";    // allowed (string)
 id = true;      // not allowed (boolean not included)
 ব্যাখ্যা:
 এখানে id হয় string বা number হতে পারে, কিন্তু অন্য কিছু নয়।
-``
+`
 ## Function Example with Union Type
-``
+`
 function printId(id: string | number) {
   console.log(`Your ID is: ${id}`);
 }
@@ -90,7 +90,7 @@ function printId(id: string | number) {
 printId(123);       // number
 printId("abc123");  // string
 // printId(true);   // error
-``
+`
 ## Union Type + Type Narrowing Example
 ``
 TypeScript বুঝতে পারে কোন টাইপ বর্তমানে ব্যবহৃত হচ্ছে।
