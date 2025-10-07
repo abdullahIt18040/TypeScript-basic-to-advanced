@@ -1,3 +1,5 @@
+
+
 # Type Inference in TypeScript
 
 ## Definition
@@ -68,6 +70,4 @@ ts
 let data: number;
 data = 10;     //  valid
 // data = "Hi"; //  Error
-
-
-
+----------------
