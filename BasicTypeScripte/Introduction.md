@@ -141,3 +141,4 @@ Type annotations automatically document করে দেয়।
 ## In short:
 
 TypeScript gives you a safer, cleaner, and more powerful version of JavaScript — perfect for professional projects.
+https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
