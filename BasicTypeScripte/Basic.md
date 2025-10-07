@@ -6,7 +6,8 @@ This is called type inference.
 
 ## Basic Variable Inference
 let message = "Hello TypeScript"; // TypeScript infers type as string
-// message = 123; // Error: number is not assignable to string
+// message = 123; // ❌ Error: number is not assignable to string
+
 
 
 Here, message automatically has type string because we assigned a string value.
