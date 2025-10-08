@@ -511,9 +511,11 @@ const employee1: Employee = {
 };
 
 console.log(employee1);
-
+```
 Explanation:
 
 & merges multiple type aliases together.
 
 Employee must have all properties from both Person and Contact.
+## NOTE
+Function Return type and parameter is the function Signature of a Function.
