@@ -392,3 +392,128 @@ function showUserInfo(user: User) {
 }
 
 showUserInfo({ name: "Abdullah", age: 24 });
+```
+## What is a Type Alias?
+
+A Type Alias allows you to create a new name for a type.
+It’s like giving a nickname to a type — useful when:
+
+You want to reuse the same type in multiple places
+
+Your type is long or complex
+
+You want to make your code more readable
+```
+ Basic Syntax
+type TypeName = type;
+
+```
+Then you can use it anywhere you’d normally use a type.
+
+## Example 1: Simple Type Alias
+```
+type ID = number;
+
+let userId: ID = 101;
+let orderId: ID = 202;
+
+console.log(userId, orderId);
+```
+ Explanation:
+
+type ID = number; → creates an alias ID for number
+
+Now you can use ID instead of number
+
+## Example 2: Object Type Alias
+```
+type User = {
+  name: string;
+  age: number;
+};
+
+const user1: User = {
+  name: "Abdullah",
+  age: 24,
+};
+
+console.log(user1);
+```
+ Explanation:
+
+User is a type representing an object with name and age.
+
+Any variable with type User must have these two properties.
+
+## Example 3: Using Type Alias in Function
+```
+type User = {
+  name: string;
+  age: number;
+};
+
+function printUserInfo(user: User): void {
+  console.log(`Name: ${user.name}, Age: ${user.age}`);
+}
+
+printUserInfo({ name: "Mamun", age: 25 });
+```
+Explanation:
+
+Function parameter user must match the User structure.
+##  Example 4: Union Types with Alias
+```
+type Status = "active" | "inactive" | "pending";
+
+let currentStatus: Status = "active";
+// currentStatus = "done"; ❌ Error — not part of the union
+
+console.log(currentStatus);
+```
+ Explanation:
+
+Status can only have one of the three specific string values.
+
+This makes your code safer and clearer.
+
+## Example 5: Function Type Alias
+```
+type AddFunction = (a: number, b: number) => number;
+
+const add: AddFunction = (x, y) => x + y;
+
+console.log(add(5, 10)); // 15
+```
+ Explanation:
+
+AddFunction is an alias for a function type.
+
+Any function with the same structure can use it.
+
+## Example 6: Combining Multiple Types
+```
+type Person = {
+  name: string;
+};
+
+type Contact = {
+  email: string;
+  phone: string;
+};
+
+// Combine with intersection (&)
+type Employee = Person & Contact;
+
+const employee1: Employee = {
+  name: "Abdullah",
+  email: "abdullah@example.com",
+  phone: "0123456789",
+};
+
+console.log(employee1);
+
+Explanation:
+
+& merges multiple type aliases together.
+
+Employee must have all properties from both Person and Contact.
