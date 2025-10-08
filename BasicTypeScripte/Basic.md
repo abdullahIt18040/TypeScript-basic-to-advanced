@@ -266,8 +266,9 @@ In TypeScript, you can define functions with types — so TypeScript knows:
 what type of arguments (inputs) the function expects
 
 and what type of value it will return
-
-  Basic Function Syntax
+```
+##  Basic Function Syntax
+```
 function functionName(parameterName: type): returnType {
   // function body
   return value;
@@ -278,9 +279,9 @@ function sayHello(name: string): string {
 }
 
 console.log(sayHello("Abdullah"));
-
-Explanation:
-
+```
+## Explanation:
+```
 name: string → The parameter must be a string
 
 : string (after the parentheses) → The function will return a string
@@ -290,34 +291,38 @@ return → Sends the result back
 Output:
 
 Hello, Abdullah!
-
- Example 2: Function Returning a Number
+```
+ ## Function Returning a Number
+ ```
 function add(a: number, b: number): number {
   return a + b;
 }
 
 console.log(add(5, 10)); // 15
-
+```
  Explanation:
 
 Both a and b are numbers
 
 Function returns a number type result (a + b)
 
- Example 3: Function Returning Nothing (void)
+ ## Function Returning Nothing (void)
+ ```
+ 
 function printMessage(message: string): void {
   console.log("Message:", message);
 }
 
 printMessage("TypeScript is powerful!");
-
+```
 Explanation:
 
 void means the function does not return any value.
 
 It only performs an action (here: logs a message).
 
- Example 4: Optional Parameter (?)
+ ## Optional Parameter (?)
+ ```
 function greet(name: string, age?: number): string {
   if (age) {
     return `Hello ${name}, you are ${age} years old.`;
@@ -332,8 +337,9 @@ console.log(greet("Abdullah", 25)); // Hello Abdullah, you are 25 years old.
 Explanation:
 
 age? → means age is optional (you can pass it or not).
-
-Example 5: Default Parameter Value
+```
+## Default Parameter Value
+```
 function greetUser(name: string = "Guest"): string {
   return `Welcome, ${name}!`;
 }
@@ -357,8 +363,9 @@ console.log(multiply(4, 5)); // 20
 This is the arrow function version of a normal function.
 
 Works the same, but uses =>.
-
- Example 7: Function Type (Stored in Variable)
+```
+## Example 7: Function Type (Stored in Variable)
+```
 let subtract: (a: number, b: number) => number;
 
 subtract = function (x, y) {
@@ -372,14 +379,15 @@ console.log(subtract(10, 4)); // 6
 (a: number, b: number) => number defines a function type.
 
 It says: this variable must store a function that takes two numbers and returns a number.
-
- Example 8: Passing Object as Parameter
+```
+##  Example 8: Passing Object as Parameter
+```
 type User = {
   name: string;
   age: number;
 };
 
-function showUserInfo(user: User): void {
+function showUserInfo(user: User) {
   console.log(`Name: ${user.name}, Age: ${user.age}`);
 }
 
