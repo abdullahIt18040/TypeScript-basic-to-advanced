@@ -253,4 +253,6 @@ function printValue(value: string | number) {
 
 
  This allows only string or number — safer and still flexible.
- 
+```
+ in javascripte when we are not return any thing it default return type is undefine. but in typescripe default return type is void.
+undefine means it is value but not define, void is not value .
