@@ -272,3 +272,115 @@ function functionName(parameterName: type): returnType {
   // function body
   return value;
 }
+Example 1: Simple Function
+function sayHello(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+console.log(sayHello("Abdullah"));
+
+Explanation:
+
+name: string → The parameter must be a string
+
+: string (after the parentheses) → The function will return a string
+
+return → Sends the result back
+
+Output:
+
+Hello, Abdullah!
+
+ Example 2: Function Returning a Number
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+console.log(add(5, 10)); // 15
+
+ Explanation:
+
+Both a and b are numbers
+
+Function returns a number type result (a + b)
+
+ Example 3: Function Returning Nothing (void)
+function printMessage(message: string): void {
+  console.log("Message:", message);
+}
+
+printMessage("TypeScript is powerful!");
+
+Explanation:
+
+void means the function does not return any value.
+
+It only performs an action (here: logs a message).
+
+ Example 4: Optional Parameter (?)
+function greet(name: string, age?: number): string {
+  if (age) {
+    return `Hello ${name}, you are ${age} years old.`;
+  } else {
+    return `Hello ${name}!`;
+  }
+}
+
+console.log(greet("Abdullah"));     // Hello Abdullah!
+console.log(greet("Abdullah", 25)); // Hello Abdullah, you are 25 years old.
+
+Explanation:
+
+age? → means age is optional (you can pass it or not).
+
+Example 5: Default Parameter Value
+function greetUser(name: string = "Guest"): string {
+  return `Welcome, ${name}!`;
+}
+
+console.log(greetUser());        // Welcome, Guest!
+console.log(greetUser("Mamun")); // Welcome, Mamun!
+
+Explanation:
+
+If no value is passed, "Guest" will be used as default.
+
+ Example 6: Arrow Function (Short Form)
+const multiply = (x: number, y: number): number => {
+  return x * y;
+};
+
+console.log(multiply(4, 5)); // 20
+
+ Explanation:
+
+This is the arrow function version of a normal function.
+
+Works the same, but uses =>.
+
+ Example 7: Function Type (Stored in Variable)
+let subtract: (a: number, b: number) => number;
+
+subtract = function (x, y) {
+  return x - y;
+};
+
+console.log(subtract(10, 4)); // 6
+
+ Explanation:
+
+(a: number, b: number) => number defines a function type.
+
+It says: this variable must store a function that takes two numbers and returns a number.
+
+ Example 8: Passing Object as Parameter
+type User = {
+  name: string;
+  age: number;
+};
+
+function showUserInfo(user: User): void {
+  console.log(`Name: ${user.name}, Age: ${user.age}`);
+}
+
+showUserInfo({ name: "Abdullah", age: 24 });
