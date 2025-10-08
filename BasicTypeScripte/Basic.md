@@ -179,3 +179,73 @@ employee2 = {
 
  এখানে id প্রপার্টি হয় string বা number হতে পারে।
 salary প্রপার্টি optional, তাই দেওয়া বা না দেওয়া — দুইটাই ঠিক আছে।
+
+```
+## any type
+`
+In TypeScript, the any type is used when you don’t know the type of a value in advance — or when you want to disable type checking for a particular variable.
+
+It tells TypeScript:
+
+“Don’t check the type for this variable — it can hold anything.”
+
+🧠 Definition:
+let variableName: any = value;
+
+
+You can assign any type of value (number, string, object, etc.) later.
+
+TypeScript won’t give errors for type mismatches.
+
+🧩 Example 1: Basic usage
+let data: any = 5;
+console.log(data);  // 5
+
+data = "Hello";
+console.log(data);  // Hello
+
+data = true;
+console.log(data);  // true
+
+
+👉 Here, the variable data can hold number, string, or boolean — no type restriction.
+
+Example 2: With objects
+let user: any = { name: "Abdullah" };
+console.log(user.name); // Abdullah
+
+user = "Now I’m just a string!";
+console.log(user); // Now I’m just a string!
+
+
+ user can be an object or a string — TypeScript won’t complain.
+
+ Example 3: Function parameter
+function printValue(value: any) {
+  console.log("Value:", value);
+}
+
+printValue(123);
+printValue("Hello");
+printValue({ id: 1, title: "TypeScript" });
+
+
+printValue() accepts any type of input.
+
+ Caution
+
+Using any too much defeats the purpose of TypeScript — it removes type safety.
+Instead of any, it’s often better to use:
+
+unknown — when you’ll check the type before using it.
+
+Union types (e.g. string | number) — when you know possible types.
+
+Better Alternative Example
+function printValue(value: string | number) {
+  console.log(value);
+}
+
+
+ This allows only string or number — safer and still flexible.
+ `
