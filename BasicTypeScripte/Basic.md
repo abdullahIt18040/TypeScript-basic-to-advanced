@@ -183,7 +183,8 @@ salary প্রপার্টি optional, তাই দেওয়া বা �
 ```
 ## any type
 ````
-In TypeScript, the any type is used when you don’t know the type of a value in advance — or when you want to disable type checking for a particular variable.
+In TypeScript, the any type is used when you don’t know the type of a value in advance — or
+ when you want to disable type checking for a particular variable.
 
 It tells TypeScript:
 
@@ -199,6 +200,7 @@ You can assign any type of value (number, string, object, etc.) later.
 TypeScript won’t give errors for type mismatches.
 `
  Example 1: Basic usage
+ `
 let data: any = 5;
 console.log(data);  // 5
 
@@ -212,6 +214,7 @@ console.log(data);  // true
  Here, the variable data can hold number, string, or boolean — no type restriction.
 
 Example 2: With objects
+``
 let user: any = { name: "Abdullah" };
 console.log(user.name); // Abdullah
 
@@ -232,8 +235,8 @@ printValue({ id: 1, title: "TypeScript" });
 
 
 printValue() accepts any type of input.
-
- Caution
+``
+Caution
 
 Using any too much defeats the purpose of TypeScript — it removes type safety.
 Instead of any, it’s often better to use:
@@ -241,6 +244,7 @@ Instead of any, it’s often better to use:
 unknown — when you’ll check the type before using it.
 
 Union types (e.g. string | number) — when you know possible types.
+``
 
 Better Alternative Example
 function printValue(value: string | number) {
@@ -249,4 +253,4 @@ function printValue(value: string | number) {
 
 
  This allows only string or number — safer and still flexible.
- `
+ ``
