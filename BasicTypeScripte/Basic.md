@@ -182,7 +182,7 @@ salary প্রপার্টি optional, তাই দেওয়া বা �
 
 ```
 ## any type
-`
+````
 In TypeScript, the any type is used when you don’t know the type of a value in advance — or
  when you want to disable type checking for a particular variable.
 
@@ -253,4 +253,4 @@ function printValue(value: string | number) {
 
 
  This allows only string or number — safer and still flexible.
- `
+ 
