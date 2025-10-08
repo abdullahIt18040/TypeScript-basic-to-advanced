@@ -182,22 +182,23 @@ salary প্রপার্টি optional, তাই দেওয়া বা �
 
 ```
 ## any type
-`
+````
 In TypeScript, the any type is used when you don’t know the type of a value in advance — or when you want to disable type checking for a particular variable.
 
 It tells TypeScript:
 
 “Don’t check the type for this variable — it can hold anything.”
-
-🧠 Definition:
+````
+ Definition:
+ `
 let variableName: any = value;
-
+`
 
 You can assign any type of value (number, string, object, etc.) later.
 
 TypeScript won’t give errors for type mismatches.
-
-🧩 Example 1: Basic usage
+`
+ Example 1: Basic usage
 let data: any = 5;
 console.log(data);  // 5
 
@@ -207,8 +208,8 @@ console.log(data);  // Hello
 data = true;
 console.log(data);  // true
 
-
-👉 Here, the variable data can hold number, string, or boolean — no type restriction.
+`
+ Here, the variable data can hold number, string, or boolean — no type restriction.
 
 Example 2: With objects
 let user: any = { name: "Abdullah" };
