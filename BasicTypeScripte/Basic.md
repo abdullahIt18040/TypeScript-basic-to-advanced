@@ -254,6 +254,7 @@ function printValue(value: string | number) {
 
  This allows only string or number — safer and still flexible.
 ```
+## How to use Functions - TypeScript
  In javascripte when we are not return any thing it default return type is undefine. but in typescripe default return type is void.
 undefine means it is value but not define, void is not value .
 What is a Function?
@@ -266,7 +267,7 @@ what type of arguments (inputs) the function expects
 
 and what type of value it will return
 
-🧩  Basic Function Syntax
+  Basic Function Syntax
 function functionName(parameterName: type): returnType {
   // function body
   return value;
