@@ -24,7 +24,7 @@ TypeScript (এবং JavaScript)-এ মডিউল তৈরি হয় যখ
 আরেক ফাইলে import দিয়ে সেটা নিয়ে আসো
 
 ##  Example 1: Export and Import
-`
+``
 file: mathUtils.ts
 export function add(a: number, b: number): number {
   return a + b;
@@ -38,15 +38,15 @@ export const PI = 3.1416;
 add() function
 
 PI constant
-`
+``
 ## file: app.ts
-`
+``
 import { add, PI } from './mathUtils';
 
 console.log(add(5, 10)); // Output: 15
 console.log(PI);         // Output: 3.1416
 
-`
+``
 এখানে আমরা আগের ফাইলের function ও constant import করেছি।
 ## Example 2: Default Export
 
