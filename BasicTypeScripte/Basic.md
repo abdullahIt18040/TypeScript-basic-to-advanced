@@ -570,3 +570,106 @@ console.log(userDetails12('123',{
    name: "asdasd",
    age: 123
 }))
+```
+## Class কী?
+
+Class হচ্ছে একটি blueprint (নকশা) — যার মাধ্যমে আমরা object তৈরি করি।
+এই object-এর মধ্যে data (properties) এবং কাজ (methods) থাকে।
+
+অর্থাৎ,
+
+Class হলো object তৈরির জন্য একটি নকশা (template)।
+
+ ```
+Basic Syntax
+class ClassName {
+  // properties
+  property1: type;
+  property2: type;
+
+  // constructor
+  constructor(param1: type, param2: type) {
+    this.property1 = param1;
+    this.property2 = param2;
+  }
+
+  // method
+  methodName() {
+    console.log(this.property1);
+  }
+}
+
+ Example: Student Class
+class Student {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  displayInfo(): void {
+    console.log(`Name: ${this.name}, Age: ${this.age}`);
+  }
+}
+
+const student1 = new Student("Mamun", 23);
+student1.displayInfo();
+```
+ Output
+Name: Mamun, Age: 23
+
+##  Access Modifiers (public, private, protected)
+
+TypeScript-এ property বা method এর visibility নিয়ন্ত্রণ করা যায়:
+
+Modifier	ব্যাখ্যা
+public (default)	সব জায়গা থেকে access করা যায়
+private	শুধু class এর ভিতরে access করা যায়
+protected	class এবং তার subclass থেকে access করা যায়
+class Person {
+  public name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  showAge() {
+    console.log(this.age);
+  }
+}
+
+const p1 = new Person("Mamun", 25);
+console.log(p1.name); //  allowed
+// console.log(p1.age); // Error (private property)
+p1.showAge(); //  works
+
+Inheritance (উত্তরাধিকার)
+
+একটি class অন্য class থেকে বৈশিষ্ট্য (properties & methods) নিতে পারে।
+
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class Student extends Person {
+  id: number;
+  constructor(name: string, id: number) {
+    super(name); // parent class constructor call
+    this.id = id;
+  }
+
+  display() {
+    console.log(`Name: ${this.name}, ID: ${this.id}`);
+  }
+}
+
+const s1 = new Student("Abdullah", 101);
+s1.display();
+
