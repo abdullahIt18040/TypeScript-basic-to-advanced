@@ -40,18 +40,18 @@ add() function
 PI constant
 ```
 ## file: app.ts
-``
+```
 import { add, PI } from './mathUtils';
 
 console.log(add(5, 10)); // Output: 15
 console.log(PI);         // Output: 3.1416
 
-``
+```
 এখানে আমরা আগের ফাইলের function ও constant import করেছি।
 ## Example 2: Default Export
 
 একটা ফাইলে default export দিলে সেটাকে নাম ছাড়া import করা যায়।
-`
+```
  file: logger.ts
 export default function logMessage(message: string): void {
   console.log("Log:", message);
@@ -66,7 +66,7 @@ logMessage("Hello, TypeScript!");
  Output:
 
 Log: Hello, TypeScript!
-`
+```
 ## Module Types
 
 TypeScript বিভিন্ন ধরনের module system সাপোর্ট করে (যেমন):
@@ -83,3 +83,8 @@ AMD, UMD	পুরনো browser-based system
     "module": "esnext"
   }
 }
+HTML page  must add 
+type  ="module "
+example :
+  <script type="module" src="./dist/test.js"></script>
+
