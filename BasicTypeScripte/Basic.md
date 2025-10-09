@@ -519,3 +519,54 @@ Explanation:
 Employee must have all properties from both Person and Contact.
 ## NOTE
 Function Return type and parameter is the function Signature of a Function.
+
+## Fuction Signature in typescripte
+In TypeScript, a function signature describes how a function should look — meaning what parameters it takes and what type of value it returns.
+## 1: Function Signature with Implementation
+```
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+```
+##  Explanation:
+
+a: number → parameter a must be a number
+
+b: number → parameter b must be a number
+
+: number → function must return a number
+
+ ## Example 2: Function Signature without Implementation
+
+You can define just the signature (structure) first, then implement it later:
+```
+let multiply: (x: number, y: number) => number;
+
+multiply = (x, y) => {
+  return x * y;
+};
+```
+
+Explanation:
+
+(x: number, y: number) => number is the function signature.
+
+It means the function takes two numbers and returns a number.
+```
+
+let userDetails12 : (id: string, info: {
+    name : string,
+    age :number
+})=> void;
+
+userDetails12 = (identification:string,info:{
+    name:string,
+    age: number
+})=>{
+
+}
+console.log(userDetails12('123',{
+   name: "asdasd",
+   age: 123
+}))
