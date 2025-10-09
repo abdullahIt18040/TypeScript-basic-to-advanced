@@ -75,7 +75,7 @@ Module Type	ব্যবহারের জায়গা
 CommonJS	Node.js (পুরনো)
 ESNext / ESModule	আধুনিক JavaScript/Browser
 AMD, UMD	পুরনো browser-based system
-
+```
 তুমি তোমার tsconfig.json ফাইলে সেট করতে পারো:
 
 {
