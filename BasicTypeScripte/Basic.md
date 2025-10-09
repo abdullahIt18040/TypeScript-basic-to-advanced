@@ -621,7 +621,7 @@ student1.displayInfo();
 Name: Mamun, Age: 23
 
 ##  Access Modifiers (public, private, protected)
-
+```
 TypeScript-এ property বা method এর visibility নিয়ন্ত্রণ করা যায়:
 
 Modifier	ব্যাখ্যা
@@ -673,3 +673,4 @@ class Student extends Person {
 const s1 = new Student("Abdullah", 101);
 s1.display();
 
+```
