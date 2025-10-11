@@ -94,7 +94,7 @@ example :
 It tells what properties and methods an object should have — and their types.
 
 Think of it like a blueprint for an object.
-
+```
  Syntax:
 interface InterfaceName {
   propertyName: type;
@@ -112,7 +112,7 @@ const user: Person = {
   age: 24
 };
 
-
+```
  Here:
 
 Person is an interface.
@@ -128,11 +128,12 @@ If you forget any property or use the wrong type, TypeScript will show an error.
  Example 2: Optional property
 
 Use ? to make a property optional.
-
+```
 interface Person {
   name: string;
   age?: number; // optional
 }
+```
 
 const user1: Person = { name: "Abdullah" }; // valid
 const user2: Person = { name: "Mamun", age: 25 }; // also valid
