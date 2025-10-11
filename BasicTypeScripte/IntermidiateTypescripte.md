@@ -184,3 +184,107 @@ const emp: Employee = {
   name: "Abdullah",
   salary: 50000
 };
+
+```
+### Interface with Class in TypeScript
+
+ একটি interface বলে দেয়, একটি class-এর মধ্যে কী কী property ও method থাকবে।
+যখন কোনো class সেই interface-কে implement করে, তখন class-টিকে সব property ও method বাস্তবায়ন (implement) করতে হয়।
+```
+Syntax:
+interface InterfaceName {
+  propertyName: type;
+  methodName(): returnType;
+}
+
+class ClassName implements InterfaceName {
+  // must include all properties & methods defined in the interface
+}
+
+Example 1: Simple Interface with Class
+interface Person {
+  name: string;
+  age: number;
+  greet(): void;
+}
+
+class Student implements Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet(): void {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+
+const student1 = new Student("Abdullah", 24);
+student1.greet();
+
+ ব্যাখ্যা:
+
+Person interface বলছে — যে কোনো class যদি এটা implement করে, তার থাকতে হবে:
+
+name (string)
+
+age (number)
+
+greet() (method)
+
+Student class Person interface implement করেছে, তাই তাকে সবগুলো property ও method define করতে হয়েছে।
+
+ Example 2: Multiple Interfaces
+
+একটি class একাধিক interface implement করতে পারে 
+
+interface CanRun {
+  run(): void;
+}
+
+interface CanEat {
+  eat(): void;
+}
+
+class Human implements CanRun, CanEat {
+  run(): void {
+    console.log("Running fast...");
+  }
+
+  eat(): void {
+    console.log("Eating food...");
+  }
+}
+
+const human1 = new Human();
+human1.run();
+human1.eat();
+
+ ব্যাখ্যা:
+
+Human ক্লাসকে CanRun এবং CanEat — দুইটিই implement করতে হয়েছে, তাই দুইটা method-ই define করা হয়েছে।
+
+ Example 3: Interface + readonly property
+interface Car {
+  readonly brand: string;
+  start(): void;
+}
+
+class Toyota implements Car {
+  readonly brand: string;
+
+  constructor(brand: string) {
+    this.brand = brand;
+  }
+
+  start(): void {
+    console.log(`${this.brand} car started.`);
+  }
+}
+
+const myCar = new Toyota("Corolla");
+myCar.start();
+
