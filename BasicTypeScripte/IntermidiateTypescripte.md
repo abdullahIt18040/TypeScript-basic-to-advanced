@@ -112,7 +112,7 @@ const user: Person = {
   age: 24
 };
 
-```
+
  Here:
 
 Person is an interface.
