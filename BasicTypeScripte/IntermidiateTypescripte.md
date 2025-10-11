@@ -87,4 +87,99 @@ HTML page  must add
 type  ="module "
 example :
   <script type="module" src="./dist/test.js"></script>
+```
+### What is an Interface in TypeScript?
 
+ An interface is a way to define the shape (structure) of an object in TypeScript.
+It tells what properties and methods an object should have — and their types.
+
+Think of it like a blueprint for an object.
+
+ Syntax:
+interface InterfaceName {
+  propertyName: type;
+  methodName(): returnType;
+}
+
+Example 1: Basic Interface
+interface Person {
+  name: string;
+  age: number;
+}
+
+const user: Person = {
+  name: "Abdullah",
+  age: 24
+};
+
+
+ Here:
+
+Person is an interface.
+
+It defines that any Person object must have:
+
+a name of type string
+
+an age of type number
+
+If you forget any property or use the wrong type, TypeScript will show an error.
+
+ Example 2: Optional property
+
+Use ? to make a property optional.
+
+interface Person {
+  name: string;
+  age?: number; // optional
+}
+
+const user1: Person = { name: "Abdullah" }; // valid
+const user2: Person = { name: "Mamun", age: 25 }; // also valid
+
+ Example 3: Interface with function
+interface MathOperation {
+  add(a: number, b: number): number;
+}
+
+const calculator: MathOperation = {
+  add(a, b) {
+    return a + b;
+  }
+};
+
+console.log(calculator.add(5, 10)); // 15
+
+ Example 4: Interface with readonly
+
+You can make a property readonly, meaning it cannot be changed.
+
+interface Car {
+  readonly brand: string;
+  model: string;
+}
+
+const myCar: Car = {
+  brand: "Toyota",
+  model: "Corolla"
+};
+
+myCar.model = "Camry"; //  allowed
+// myCar.brand = "Honda";  Error - readonly property
+
+ Example 5: Interface Inheritance
+
+Interfaces can extend other interfaces.
+
+interface Person {
+  name: string;
+}
+
+interface Employee extends Person {
+  salary: number;
+}
+
+const emp: Employee = {
+  name: "Abdullah",
+  salary: 50000
+};
