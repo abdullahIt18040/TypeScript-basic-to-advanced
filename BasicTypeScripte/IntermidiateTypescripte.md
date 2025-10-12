@@ -751,3 +751,21 @@ console.log(user.toUpperCase()); // Error: Object is possibly 'null'
 if (user !== null) {
   console.log(user.toUpperCase());
 }
+type User = {
+  name: string;
+  age: number | null; // age nullable
+};
+
+function showUserInfo(user: User) {
+  if (user.age !== null) {
+    console.log(`${user.name} is ${user.age} years old.`);
+  } else {
+    console.log(`${user.name} didn’t provide their age.`);
+  }
+}
+
+const user1: User = { name: "Abdullah", age: 24 };
+const user2: User = { name: "Mamun", age: null };
+
+showUserInfo(user1);
+showUserInfo(user2);
