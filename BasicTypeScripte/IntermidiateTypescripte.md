@@ -343,6 +343,7 @@ let user = addId({name:"awe",age: 23});
 ## Generic Interface
 normaly we used intrerface to struct objecg 
 like 
+```
 interface ApiResponse{
   status:number,
   type:string,
@@ -402,3 +403,86 @@ class DataHolder<T> {
 
 const stringData = new DataHolder<string>("TypeScript");
 const numberData = new DataHolder<number>(100);
+
+```
+Enum in TypeScript (সহজভাবে)
+### Enum কী?
+
+enum মানে হলো “Enumeration” বা নাম দেওয়া কনস্ট্যান্ট ভ্যালুগুলোর সেট।
+TypeScript-এ enum ব্যবহার করা হয় ফিক্সড মানগুলোর তালিকা তৈরি করতে — যেগুলোর মান বদলাবে না।
+ সহজভাবে বললে:
+
+যখন তোমার কোডে একই ধরনের কিছু মান বারবার লাগে (যেমন রঙ, স্ট্যাটাস, দিক, ভূমিকা ইত্যাদি),
+তখন Enum ব্যবহার করলে কোড clean, readable এবং কম ভুল হয়।
+
+ Example 1 – Basic Enum
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right
+}
+
+let move: Direction = Direction.Up;
+console.log(move); // Output: 0
+
+
+ এখানে Direction নামের enum-এ ৪টা মান আছে।
+ ডিফল্টভাবে প্রথম মানের সংখ্যা হয় 0, এরপর 1, 2, 3।
+
+ Example 2 – Custom Number Value
+enum Direction {
+  Up = 10,
+  Down = 20,
+  Left = 30,
+  Right = 40
+}
+
+console.log(Direction.Left); // Output: 30
+
+
+ তুমি চাইলে নিজে থেকেই মান দিতে পারো।
+
+ Example 3 – String Enum
+enum Status {
+  Success = "SUCCESS",
+  Error = "ERROR",
+  Pending = "PENDING"
+}
+
+let currentStatus: Status = Status.Success;
+console.log(currentStatus); // Output: "SUCCESS"
+
+
+যখন তুমি চাও প্রতিটি মানের নির্দিষ্ট নাম থাকুক (যেমন "SUCCESS"), তখন string enum ব্যবহার করো।
+
+Example 4 – Enum with Condition
+enum Role {
+  Admin = "ADMIN",
+  User = "USER",
+  Guest = "GUEST"
+}
+
+function checkPermission(role: Role) {
+  if (role === Role.Admin) {
+    console.log("Full Access");
+  } else if (role === Role.User) {
+    console.log("Limited Access");
+  } else {
+    console.log("Guest Access");
+  }
+}
+
+checkPermission(Role.User); // Output: Limited Access
+
+
+ এইভাবে enum ব্যবহার করে তুমি সহজে condition handle করতে পারো।
+
+ Example 5 – Heterogeneous Enum (সংখ্যা + স্ট্রিং একসাথে)
+enum Mixed {
+  No = 0,
+  Yes = "YES"
+}
+
+console.log(Mixed.No);  // 0
+console.log(Mixed.Yes); // "YES"
