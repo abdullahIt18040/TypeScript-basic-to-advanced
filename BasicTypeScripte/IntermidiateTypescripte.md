@@ -949,3 +949,55 @@ printValue(5);          // 15
 printValue("hello");    // HELLO
 printValue(true);
 ```
+## any টাইপ কী?
+
+ TypeScript-এ any মানে হলো — “আমি জানি না এটা কোন টাইপ, যেকোনো কিছু হতে পারে।”
+
+অর্থাৎ, TypeScript টাইপ চেক করবে না।
+আপনি চাইলে এই ভেরিয়েবলকে string, number, boolean, object — যেকোনো কিছু দিতে পারবেন।
+```
+ Syntax
+let variableName: any;
+
+ Example 1: Basic use
+let data: any = "Hello"; // string
+data = 123;              // number
+data = true;             // boolean
+data = { name: "Abdullah" }; // object
+
+
+এখানে data যেকোনো টাইপে পরিবর্তন করা যায় কারণ এর টাইপ any।
+
+ Example 2: With function
+function printData(value: any) {
+  console.log(value);
+}
+
+printData("Hello"); // string
+printData(42);      // number
+printData(true);    // boolean
+
+
+ এখানে ফাংশন printData যেকোনো টাইপের ডাটা নিতে পারে।
+
+ Warning (সতর্কতা)
+
+any টাইপ ব্যবহার করলে TypeScript-এর টাইপ সেফটি হারিয়ে যায়।
+অর্থাৎ ভুল টাইপ দিলেও TypeScript কোনো এরর দেখাবে না।
+
+তাই সাধারণত unknown বা specific type ব্যবহার করাই ভালো।
+
+Best Practice
+
+ভুল:
+
+let user: any = "Abdullah";
+console.log(user.toFixed(2)); // রানটাইমে এরর হতে পারে
+
+
+ঠিক:
+
+let user: unknown = "Abdullah";
+if (typeof user === "number") {
+  console.log(user.toFixed(2));
+}
