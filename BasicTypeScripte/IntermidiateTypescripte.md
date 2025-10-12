@@ -633,3 +633,69 @@ const user: User = {
 
 Interface এর ক্ষেত্রেও একদম একইভাবে কাজ করে।
 ```
+## Literal Type আসলে কী করে?
+
+Literal type হলো এক ধরনের "constant type" —
+মানে: “এই মানটাই শুধু ঠিক আছে, অন্য কিছু নয়।”
+```
+Example 2 – Number Literal Type
+let digit: 1 | 2 | 3;
+
+digit = 1; //  ঠিক আছে
+digit = 4; //  Error
+
+
+ এখানে শুধু ১, ২, বা ৩ মান দেওয়া যাবে।
+
+ Example 3 – Boolean Literal Type
+let isActive: true;
+
+isActive = true;  //  ঠিক আছে
+isActive = false; //  Error
+
+
+ এখানে শুধু true মান দেওয়া যাবে।
+
+Example 4 – Function এ Literal Type
+function move(direction: "up" | "down" | "left" | "right") {
+  console.log("Moving " + direction);
+}
+
+move("up");    //  ঠিক আছে
+move("right"); //  ঠিক আছে
+// move("back");  Error
+
+
+ এখন move() ফাংশনে শুধু নির্দিষ্ট চারটা শব্দই যাবে।
+
+] Example 5 – Combine with Type Alias
+type Status = "success" | "error" | "loading";
+
+function showStatus(status: Status) {
+  console.log(`Current status: ${status}`);
+}
+
+showStatus("success"); //  ঠিক আছে
+showStatus("error");   //  ঠিক আছে
+// showStatus("done");  Error
+
+
+এভাবে তুমি একটি টাইপ বানিয়ে বারবার ব্যবহার করতে পারো।
+
+ Literal Type এর সুবিধা
+সুবিধা	ব্যাখ্যা
+ নির্দিষ্ট মান নির্ধারণ করা যায়	ভুল মান দেওয়া রোধ করে
+ টাইপ-সেফ কোড	TypeScript সাথে সাথে এরর ধরবে
+Enum ছাড়া সহজ উপায়ে fixed মান ব্যবহার করা যায়	যেমন "success", "error" ইত্যাদি
+Auto-suggestion কাজ করে	IDE তে মান সাজেস্ট করে দেয়
+সহজভাবে মনে রাখো:
+let direction: "left" | "right";
+
+direction = "left";  // 
+direction = "right"; // 
+direction = "up";    // Error
+
+
+Literal Type মানে —
+ভেরিয়েবল শুধু নির্দিষ্ট কিছু মানই নিতে পারবে।
+```
