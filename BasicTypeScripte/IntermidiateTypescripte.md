@@ -699,3 +699,55 @@ direction = "up";    // Error
 Literal Type মানে —
 ভেরিয়েবল শুধু নির্দিষ্ট কিছু মানই নিতে পারবে।
 ```
+### Nullable Type in TypeScript
+
+অর্থ:
+Nullable টাইপ বলতে বোঝায় এমন ভেরিয়েবল যেটি একটি মান (value) বা null / undefined হতে পারে।
+অর্থাৎ, কোনো ভেরিয়েবল যদি খালি (null) বা অনির্ধারিত (undefined) মানও নিতে পারে, তাহলে সেটি nullable type।
+```
+উদাহরণ ১: সাধারণ nullable type
+let username: string | null = "Abdullah";
+username = null; // এটা বৈধ
+
+
+ এখানে username ভেরিয়েবলটি string বা null – দুই ধরনের মানই নিতে পারে।
+
+উদাহরণ ২: null এবং undefined দুটোই
+let age: number | null | undefined = 25;
+age = null;       // valid
+age = undefined;  // valid
+
+
+মানে — age এর মান ২৫, null, বা undefined — যেকোনোটি হতে পারে।
+
+ উদাহরণ ৩: ফাংশনে nullable parameter
+function printName(name: string | null) {
+  if (name) {
+    console.log("Hello, " + name);
+  } else {
+    console.log("Hello, guest!");
+  }
+}
+
+printName("Mamun");
+printName(null);
+
+```
+ এখানে name প্যারামিটারটি হয় string, নয়তো null হতে পারে।
+
+ কেন দরকার?
+
+Nullable টাইপ ব্যবহারে TypeScript আপনাকে type safety দেয়।
+যদি আপনি কোনো ভেরিয়েবল null হতে পারে জেনে সেটার প্রপার্টি এক্সেস করতে যান, TypeScript আগে থেকেই সতর্ক করবে।
+
+ ভুল উদাহরণ:
+let user: string | null = null;
+console.log(user.toUpperCase()); // Error: Object is possibly 'null'
+
+
+ কারণ user null হতে পারে, তাই TypeScript এই ভুলটি ধরবে।
+
+সমাধান:
+if (user !== null) {
+  console.log(user.toUpperCase());
+}
