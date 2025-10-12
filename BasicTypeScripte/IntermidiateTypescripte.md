@@ -893,3 +893,59 @@ Type assertion মানে TypeScript-কে জোর করে বিশ্�
 let num = 123 as unknown as string;
 console.log(num.toUpperCase()); //  Runtime error\
 ```
+## Type in TypeScript
+অর্থ:
+
+unknown মানে হলো — "আমি জানি না এখন এটা কী টাইপের, কিন্তু পরে যাচাই করব।"
+
+এটা any-এর মতো দেখতে হলেও আরও নিরাপদ (safer)।
+
+ সহজভাবে বললে:
+
+যখন তুমি জানো না কোনো ভেরিয়েবল কী টাইপের হতে পারে, তখন unknown ব্যবহার করো।
+কিন্তু — সরাসরি সেটা ব্যবহার করতে পারবে না, আগে টাইপ চেক করতে হবে।
+```
+Example 1 – Basic Example
+let value: unknown;
+
+value = "Hello";
+value = 42;
+value = true;
+
+
+ এখানে value যেকোনো টাইপের মান নিতে পারে, কিন্তু TypeScript জানে না সেটা আসলে কী।
+
+Example 2 – সরাসরি ব্যবহার করা যাবে না
+let value: unknown = "TypeScript";
+
+console.log(value.toUpperCase()); //  Error: Object is of type 'unknown'
+
+
+কারণ TypeScript নিশ্চিত নয় value আসলে string কিনা।
+
+ Example 3 – Type Check করে ব্যবহার করা
+let value: unknown = "TypeScript";
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase()); //  Safe
+}
+
+
+ এখন আমরা TypeScript-কে জানিয়ে দিচ্ছি:
+"যদি এটা string হয়, তখনই .toUpperCase() ব্যবহার করো।"
+
+ Example 4 – Function এর মধ্যে ব্যবহার
+function printValue(value: unknown) {
+  if (typeof value === "number") {
+    console.log(value + 10);
+  } else if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log("Unknown type");
+  }
+}
+
+printValue(5);          // 15
+printValue("hello");    // HELLO
+printValue(true);
+```
