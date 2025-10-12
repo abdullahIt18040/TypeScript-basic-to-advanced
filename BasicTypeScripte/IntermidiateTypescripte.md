@@ -287,4 +287,57 @@ class Toyota implements Car {
 
 const myCar = new Toyota("Corolla");
 myCar.start();
+```
+## Generics কী?
+
+Generics মানে হলো —
+একটা function, class বা interface এমনভাবে লেখা, যাতে সেটা যে কোনো টাইপের ডেটা (যেমন number, string, boolean ইত্যাদি) নিয়েও কাজ করতে পারে।
+```
+const addId = (obj:object)=>{
+let id = Math.floor(Math.random()*100);
+return {...obj,id}
+}
+
+let user = addId({name:"awe",age: 23});
+user.age
+but whe we used Generic
+const addId = <T>(obj:T)=>{
+let id = Math.floor(Math.random()*100);
+return {...obj,id}
+}
+
+let user = addId({name:"awe",age: 23});
+we get only user.id, but
+other user property not found ,to slove this problem we used Generic.
+const addId = <T>(obj:T)=>{
+let id = Math.floor(Math.random()*100);
+return {...obj,id}
+}
+let user = addId({name:"awe",age: 23});
+user.age now we we gell all user proberty.
+const addId = <T >(obj:T)=>{
+let id = Math.floor(Math.random()*100);
+return {...obj,id}
+}
+
+let user = addId("abdullah");
+that is string , but 
+
+if we want to Set type in generic wc can do this.
+const addId = <T extends object>(obj:T)=>{
+let id = Math.floor(Math.random()*100);
+return {...obj,id}
+}
+now it always received only object.
+let user = addId("abdullah"); invalid 
+let user2 = addId({name:"awe",age: 23}); valid.
+
+if we want to set Type .
+const addId = <T extends {name :string,age:number}>(obj:T)=>{
+let id = Math.floor(Math.random()*100);
+return {...obj,id}
+}
+
+let user = addId({name:"awe",age: 23});
+user.age
 
