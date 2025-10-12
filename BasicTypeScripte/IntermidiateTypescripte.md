@@ -769,3 +769,72 @@ const user2: User = { name: "Mamun", age: null };
 
 showUserInfo(user1);
 showUserInfo(user2);
+
+
+### Optional Chaining (?.) in TypeScript
+ কি করে?
+
+?. ব্যবহার করে তুমি nullable বা undefined প্রোপার্টি এক্সেস করতে পারো সেফলি,
+যদি মান না থাকে (null বা undefined) → TypeError হবে না, শুধু undefined রিটার্ন করবে।
+```
+ Example ১ – Simple Object
+type User = {
+  name: string;
+  address?: {
+    city: string;
+    zip?: string;
+  };
+};
+
+const user1: User = {
+  name: "Abdullah",
+  address: { city: "Dhaka", zip: "1207" }
+};
+
+const user2: User = {
+  name: "Mamun"
+};
+
+console.log(user1.address?.city); // Dhaka
+console.log(user2.address?.city); // undefined (TypeError হবে না!)
+
+
+ এখানে user2.address নেই, তাই .city এক্সেস করলে error হবে না, শুধু undefined রিটার্ন হয়।
+
+ Example ২ – Function Call
+type User = {
+  name: string;
+  greet?: () => void;
+};
+
+const user1: User = { name: "Abdullah", greet: () => console.log("Hello!") };
+const user2: User = { name: "Mamun" };
+
+user1.greet?.(); // Hello!
+user2.greet?.(); // কিছু হবে না, error হবে না
+
+
+ Optional chaining দিয়ে nullable function call safely করা হলো।
+
+ Example ৩ – Array Access
+const users: User[] = [{ name: "Abdullah" }];
+
+console.log(users[0]?.name); // Abdullah
+console.log(users[1]?.name); // undefined
+
+
+ Array element না থাকলেও error হবে না।
+
+ Example ৪ – Combination with Nullish Coalescing
+const user2City = user2.address?.city ?? "Unknown city";
+console.log(user2City); // Unknown city
+
+
+ Optional chaining দিয়ে check + ?? দিয়ে default value set করা হলো।
+
+ কেন ব্যবহার করবে?
+সুবিধা	ব্যাখ্যা
+ Safe access	nullable বা undefined প্রোপার্টি access safe করে
+ Less code	অনেক if/else এর দরকার নেই
+ Combine with ??	default value set করা যায় সহজে
+ সহজে মনে রাখার নিয়ম
