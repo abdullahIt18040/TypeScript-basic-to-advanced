@@ -486,3 +486,84 @@ enum Mixed {
 
 console.log(Mixed.No);  // 0
 console.log(Mixed.Yes); // "YES"
+```
+### Tuple কী?
+
+ Tuple হলো এক ধরনের array, কিন্তু পার্থক্য হলো —
+এর মধ্যে কতগুলো মান থাকবে এবং কোন টাইপের মান থাকবে তা আগে থেকেই নির্ধারিত থাকে।
+
+অর্থাৎ,
+Tuple হলো “fixed size + fixed type array” 
+
+ উদাহরণ:
+ ```
+let user: [string, number];
+user = ["Abdullah", 25];
+
+
+ এখানে প্রথম মান অবশ্যই string,
+ দ্বিতীয় মান অবশ্যই number হতে হবে।
+অন্য কোনো টাইপ বা বেশি/কম মান দিলে এরর দেবে।
+
+ ভুল উদাহরণ:
+user = [25, "Abdullah"]; //  টাইপ উল্টানো যাবে না
+user = ["Mamun"];         //  একটি মান কম
+user = ["Mamun", 25, "Extra"]; //  একটি মান বেশি
+
+ Tuple Access করা:
+console.log(user[0]); // "Abdullah"
+console.log(user[1]); // 25
+
+ Example – Tuple in Function Return
+function getUser(): [string, number] {
+  return ["Abdullah", 25];
+}
+
+const [name, age] = getUser();
+console.log(name); // Abdullah
+console.log(age);  // 25
+
+
+ এখানে function দুটি মান (string ও number) একসাথে রিটার্ন করছে Tuple আকারে।
+
+ Example – Tuple with Optional Value
+let person: [string, number?, string?];
+person = ["Mamun"];
+person = ["Mamun", 25];
+person = ["Mamun", 25, "Bangladesh"];
+
+
+➡️ ? মানে ঐ মানটা optional (না দিলেও হবে)।
+
+ Example – Tuple with Label (for readability)
+let student: [name: string, age: number, passed: boolean];
+student = ["Abir", 22, true];
+
+ লেবেল দিলে কোড বুঝতে আরও সহজ হয়।
+
+ Example – Tuple Array
+
+যখন একাধিক tuple রাখতে চাও:
+
+let employees: [string, number][] = [
+  ["Abdullah", 101],
+  ["Mamun", 102],
+  ["Rafi", 103]
+];
+
+console.log(employees[1]); // ["Mamun", 102]
+
+ কেন Tuple ব্যবহার করবে?
+সুবিধা	ব্যাখ্যা
+ Fixed size	নির্দিষ্ট সংখ্যক মান থাকবে Fixed type	প্রত্যেক মানের টাইপ আগেই নির্ধারিত
+ Readable	ডেটা গঠন সহজে বোঝা যায়
+ Function return-এ সুবিধাজনক	একাধিক মান রিটার্ন করা সহজ
+ সহজভাবে মনে রাখো:
+let data: [string, number, boolean] = ["Hello", 123, true];
+
+
+এটি হলো এমন এক array যেখানে:
+ প্রথম মান string
+ দ্বিতীয় মান number
+ তৃতীয় মান boolean
+```
