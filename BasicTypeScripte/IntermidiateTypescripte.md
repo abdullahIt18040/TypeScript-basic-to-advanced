@@ -838,3 +838,58 @@ console.log(user2City); // Unknown city
  Less code	অনেক if/else এর দরকার নেই
  Combine with ??	default value set করা যায় সহজে
  সহজে মনে রাখার নিয়ম
+```
+### Type Assertion in TypeScript
+ অর্থ:
+
+Type Assertion মানে হলো —
+ তুমি TypeScript-কে “বলো” কোন ভেরিয়েবল আসলে কোন টাইপের।
+
+TypeScript তখন তোমার কথাই বিশ্বাস করে, সে নিজে টাইপ অনুমান করে না।
+অর্থাৎ, তুমি TypeScript-কে বলছো — “আমি জানি এটা কোন টাইপ, তুমি চিন্তা কোরো না।” 
+```
+ Basic Example
+let value: unknown = "Hello TypeScript";
+
+let length1 = (value as string).length;
+console.log(length1); // 16
+
+
+ এখানে value-এর টাইপ unknown, তাই সরাসরি .length ব্যবহার করা যেত না।
+as string দিয়ে বলেছি, “এইটা আসলে একটা string।”
+
+Alternative Syntax (Angular-style)
+let length2 = (<string>value).length;
+console.log(length2);
+
+
+<string> হলো Type Assertion এর আরেকটা syntax (JSX ছাড়া project-এ ব্যবহার করা যায়)।
+
+Example ২ – DOM Element
+const input = document.getElementById("username") as HTMLInputElement;
+input.value = "Abdullah";
+
+
+ এখানে TypeScript জানে না #username কোন টাইপের element, তাই আমরা as HTMLInputElement দিয়ে Type নির্দিষ্ট করেছি।
+
+ Example ৩ – Narrowing unknown type
+function getData(data: unknown) {
+  if (typeof data === "string") {
+    let upper = (data as string).toUpperCase();
+    console.log(upper);
+  }
+}
+
+getData("hello");
+
+
+ এখানে data প্রথমে unknown, কিন্তু as string দিয়ে আমরা সেটাকে string হিসেবে ব্যবহার করেছি।
+
+ সতর্কতা:
+
+Type assertion মানে TypeScript-কে জোর করে বিশ্বাস করানো।
+তাই ভুল assertion করলে runtime-এ error হতে পারে 
+
+let num = 123 as unknown as string;
+console.log(num.toUpperCase()); //  Runtime error\
+```
