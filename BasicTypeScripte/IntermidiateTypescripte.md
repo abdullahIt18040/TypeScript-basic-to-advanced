@@ -1001,3 +1001,55 @@ let user: unknown = "Abdullah";
 if (typeof user === "number") {
   console.log(user.toFixed(2));
 }
+```
+
+### never টাইপ কী?
+
+ TypeScript-এ never মানে হলো —
+“এই কোড কখনোই কোনো ভ্যালু রিটার্ন করবে না।”
+
+অর্থাৎ, এমন কিছু যেখানে ফাংশন শেষ পর্যন্ত পৌঁছায় না,
+যেমন:
+
+কোনো error throw করে, বা
+
+infinite loop এর মধ্যে চলে যায়।
+
+ Syntax
+function funcName(): never {
+  // কিছু কোড
+}
+```
+ Example 1: Error throw করলে
+function throwError(message: string): never {
+  throw new Error(message);
+}
+
+
+এখানে throwError ফাংশন কোনো ভ্যালু রিটার্ন করে না, বরং সবসময় error ছোড়ে।
+তাই এর টাইপ never।
+
+ Example 2: Infinite loop
+function infiniteLoop(): never {
+  while (true) {
+    console.log("Running...");
+  }
+}
+
+
+এই ফাংশন কখনো শেষ হবে না —
+তাই TypeScript জানে যে এটি কখনো return করবে না, তাই টাইপ never।
+
+ Example 3: Exhaustive Check (Advanced Use)
+type Shape = "circle" | "square";
+
+function getArea(shape: Shape) {
+  if (shape === "circle") {
+    return Math.PI * 2 * 2;
+  } else if (shape === "square") {
+    return 4 * 4;
+  } else {
+    const _check: never = shape; // এখানে TypeScript এরর দেবে যদি নতুন টাইপ যুক্ত হয়
+  }
+}
+```
