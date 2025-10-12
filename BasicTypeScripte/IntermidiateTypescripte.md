@@ -337,7 +337,68 @@ const addId = <T extends {name :string,age:number}>(obj:T)=>{
 let id = Math.floor(Math.random()*100);
 return {...obj,id}
 }
-
 let user = addId({name:"awe",age: 23});
-user.age
 
+```
+## Generic Interface
+normaly we used intrerface to struct objecg 
+like 
+interface ApiResponse{
+  status:number,
+  type:string,
+  data:object
+}
+const myres:ApiResponse ={
+  status:200,
+  type:'ok',
+  data:{
+    id:101,
+    name:"dasfdsf"
+  }
+}
+but we dont nknow what are the Api response, object or anything .to solve we are used Generic
+
+
+interface ApiResponse<T>{
+  status:number,
+  type:string,
+  data:T
+}
+const myres:ApiResponse<Object> ={
+  status:200,
+  type:'ok',
+  data:{
+    id:101,
+    name:"dasfdsf"
+  }
+}
+if we pass response as string then 
+
+interface ApiResponse<T>{
+  status:number,
+  type:string,
+  data:T
+}
+const myres:ApiResponse<String> ={
+  status:200,
+  type:'ok',
+  data:"abdullah"
+}
+
+: Generic Interface
+interface Box<T> {
+  content: T;
+}
+
+const stringBox: Box<string> = { content: "Hello" };
+const numberBox: Box<number> = { content: 123 };
+Generic Class
+class DataHolder<T> {
+  value: T;
+  constructor(value: T) {
+    this.value = value;
+  }
+}
+
+const stringData = new DataHolder<string>("TypeScript");
+const numberData = new DataHolder<number>(100);
