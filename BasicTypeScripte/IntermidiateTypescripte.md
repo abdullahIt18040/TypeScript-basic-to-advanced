@@ -567,3 +567,69 @@ let data: [string, number, boolean] = ["Hello", 123, true];
  দ্বিতীয় মান number
  তৃতীয় মান boolean
 ```
+Intersection Type কী?
+
+## Intersection Type (&) মানে হলো —
+দুই বা তার বেশি টাইপকে একত্র করে একটি টাইপ তৈরি করা।
+
+অর্থাৎ,
+যদি তুমি চাও কোনো ভেরিয়েবলে একাধিক টাইপের প্রোপার্টি একসাথে থাকুক — তখন Intersection Type ব্যবহার করা হয়।
+```
+Basic Example
+type Person = {
+  name: string;
+  age: number;
+};
+
+type Employee = {
+  employeeId: number;
+  department: string;
+};
+
+type Staff = Person & Employee;
+
+```
+এখন Staff টাইপে Person + Employee — দুইটার প্রোপার্টিই থাকবে ✅
+```
+ Example: Using the Combined Type
+const staff1: Staff = {
+  name: "Abdullah",
+  age: 25,
+  employeeId: 101,
+  department: "IT"
+};
+
+
+এখানে তুমি দেখতে পাচ্ছো, staff1-এর মধ্যে Person ও Employee দুইটাই একসাথে কাজ করছে।
+
+ আরেকটা Example — Function Parameter এ
+type Student = { name: string };
+type Marks = { score: number };
+
+function showInfo(data: Student & Marks) {
+  console.log(`${data.name} scored ${data.score}`);
+}
+
+showInfo({ name: "Mamun", score: 95 });
+
+ এখানে data-তে দুই টাইপের (Student + Marks) প্রোপার্টি থাকতে হবে।
+
+ Intersection with Interface
+interface Address {
+  city: string;
+}
+
+interface Contact {
+  phone: string;
+}
+
+type User = Address & Contact;
+
+const user: User = {
+  city: "Dhaka",
+  phone: "01712345678"
+};
+
+
+Interface এর ক্ষেত্রেও একদম একইভাবে কাজ করে।
+```
