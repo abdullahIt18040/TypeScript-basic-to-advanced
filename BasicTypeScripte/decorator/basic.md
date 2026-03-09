@@ -137,3 +137,67 @@ Dependency Injection করার জন্য
 ```
 
 Framework configuration করার জন্য
+### Decorator Factory কী?
+
+সহজভাবে:
+
+Decorator Factory হলো এমন একটি function যা parameter নিয়ে একটি decorator return করে।
+```
+Structure:
+
+function DecoratorFactory(parameter) {
+  return function(target) {
+    // decorator logic
+  };
+}
+
+ব্যবহার:
+
+@DecoratorFactory("Hello")
+class Test {}
+২. Simple Example
+function Logger(message: string) {
+  return function (constructor: Function) {
+    console.log(message);
+    console.log(constructor.name);
+  };
+}
+
+@Logger("This is a decorator factory")
+class Person {
+  name = "Mamun";
+}
+
+Output
+
+This is a decorator factory
+Person
+
+এখানে:
+
+Logger() হলো Decorator Factory
+
+ভিতরের function হলো actual decorator
+
+৩. Method Decorator Factory Example
+function LogMethod(prefix: string) {
+  return function (
+    target: any,
+    methodName: string,
+    descriptor: PropertyDescriptor
+  ) {
+    console.log(prefix + methodName);
+  };
+}
+
+class Calculator {
+  @LogMethod("Executing method: ")
+  add(a: number, b: number) {
+    return a + b;
+  }
+}
+
+Output
+
+Executing method: add
+```
