@@ -371,3 +371,144 @@ TypeORM
 
 এখানে @Component একটি useful decorator।
 ```
+## TypeScript এ Multiple Decorators মানে হলো একই class, method, property বা parameter-এর উপর একাধিক decorator ব্যবহার করা।
+
+এতে একটি decorator অন্যটির সাথে combine হয়ে কাজ করতে পারে।
+
+## ১. Multiple Decorator কী?
+```
+যখন একটি element-এর উপর একাধিক @decorator ব্যবহার করা হয়, তখন তাকে Multiple Decorators বলে।
+
+Example:
+
+@Decorator1
+@Decorator2
+class Example {}
+
+এখানে Decorator1 এবং Decorator2 দুইটিই একই class-এর উপর কাজ করবে।
+
+২. Simple Example
+function First() {
+  console.log("First decorator");
+}
+
+function Second() {
+  console.log("Second decorator");
+}
+
+@First
+@Second
+class Test {}
+
+Output:
+
+Second decorator
+First decorator
+
+👉 কারণ decorators bottom → up order এ execute হয়।
+
+৩. Method-এ Multiple Decorator
+function Log(target: any, method: string) {
+  console.log("Log decorator:", method);
+}
+
+function Auth(target: any, method: string) {
+  console.log("Auth decorator:", method);
+}
+
+class UserService {
+
+  @Auth
+  @Log
+  getUser() {
+    console.log("User data");
+  }
+
+}
+
+Output:
+
+Log decorator: getUser
+Auth decorator: getUser
+৪. Decorator Factory সহ Multiple Decorator
+function Logger(message: string) {
+  return function (constructor: Function) {
+    console.log(message);
+  };
+}
+
+function Version(version: string) {
+  return function (constructor: Function) {
+    console.log("Version:", version);
+  };
+}
+
+@Logger("Application Started")
+@Version("1.0")
+class App {}
+
+Output:
+
+Version: 1.0
+Application Started
+৫. Execution Order (খুব গুরুত্বপূর্ণ)
+
+Multiple decorator থাকলে execution order দুইভাবে ঘটে।
+
+১️⃣ Decorator Expression Evaluation
+
+উপর থেকে নিচে
+
+২️⃣ Decorator Function Execution
+
+নিচ থেকে উপরে
+
+Example:
+
+function A() {
+  console.log("A evaluated");
+  return function () {
+    console.log("A executed");
+  };
+}
+
+function B() {
+  console.log("B evaluated");
+  return function () {
+    console.log("B executed");
+  };
+}
+
+@A()
+@B()
+class Demo {}
+
+Output:
+
+A evaluated
+B evaluated
+B executed
+A executed
+৬. বাস্তব ব্যবহার (Real Use Case)
+
+Multiple decorators সাধারণত ব্যবহৃত হয়:
+
+Authentication
+
+Logging
+
+Validation
+
+Caching
+
+Example:
+
+class OrderService {
+
+  @Auth
+  @Log
+  @Cache
+  placeOrder() {}
+
+}
+```
