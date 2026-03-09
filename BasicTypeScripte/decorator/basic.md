@@ -201,3 +201,173 @@ Output
 
 Executing method: add
 ```
+## TypeScript এ Useful Decorator তৈরি করা মানে এমন decorator বানানো যা বাস্তবে logging, validation, caching, authorization ইত্যাদি কাজে লাগে।
+
+নিচে কয়েকটি practical example দেখানো হলো।
+```
+১. Logging Decorator (Method Call Track করা)
+
+এই decorator method call হলে log দেখাবে।
+
+function LogExecution(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  const originalMethod = descriptor.value;
+
+  descriptor.value = function (...args: any[]) {
+    console.log(`Method ${methodName} called with`, args);
+    const result = originalMethod.apply(this, args);
+    console.log(`Method ${methodName} returned`, result);
+    return result;
+  };
+}
+
+ব্যবহার:
+
+class Calculator {
+
+  @LogExecution
+  add(a: number, b: number) {
+    return a + b;
+  }
+
+}
+
+const calc = new Calculator();
+calc.add(5, 3);
+
+Output:
+
+Method add called with [5,3]
+Method add returned 8
+
+👉 এটি debugging এবং monitoring এর জন্য খুব useful।
+
+২. Execution Time Decorator (Performance Measure)
+
+এই decorator method কত সময় নেয় তা মাপবে।
+
+function MeasureTime(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  const original = descriptor.value;
+
+  descriptor.value = function (...args: any[]) {
+    const start = Date.now();
+
+    const result = original.apply(this, args);
+
+    const end = Date.now();
+    console.log(`${methodName} took ${end - start} ms`);
+
+    return result;
+  };
+}
+
+ব্যবহার:
+
+class DataService {
+
+  @MeasureTime
+  loadData() {
+    for (let i = 0; i < 100000000; i++) {}
+  }
+
+}
+
+new DataService().loadData();
+৩. Validation Decorator
+
+Parameter check করার জন্য decorator ব্যবহার করা যায়।
+
+function MinLength(length: number) {
+  return function (target: any, propertyKey: string) {
+
+    let value: string;
+
+    const getter = () => value;
+
+    const setter = (newVal: string) => {
+      if (newVal.length < length) {
+        throw new Error(`${propertyKey} must be at least ${length} characters`);
+      }
+      value = newVal;
+    };
+
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter
+    });
+
+  };
+}
+
+ব্যবহার:
+
+class User {
+
+  @MinLength(5)
+  password: string;
+
+}
+
+const user = new User();
+user.password = "12345"; // OK
+user.password = "123";   // Error
+৪. Authorization Decorator
+
+User login আছে কিনা check করতে পারে।
+
+function RequireLogin(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+
+  const original = descriptor.value;
+
+  descriptor.value = function (...args: any[]) {
+
+    const isLoggedIn = true;
+
+    if (!isLoggedIn) {
+      console.log("User not authorized");
+      return;
+    }
+
+    return original.apply(this, args);
+  };
+}
+
+ব্যবহার:
+
+class BankService {
+
+  @RequireLogin
+  transferMoney() {
+    console.log("Money transferred");
+  }
+
+}
+৫. Decorators কোথায় বেশি ব্যবহার হয়
+
+Real-world এ decorators অনেক framework-এ ব্যবহার হয়:
+
+Angular
+
+NestJS
+
+TypeORM
+
+উদাহরণ (Angular):
+
+@Component({
+  selector: 'app-user'
+})
+
+এখানে @Component একটি useful decorator।
+```
